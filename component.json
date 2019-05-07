@@ -1,0 +1,51 @@
+{
+    "title": "Google Search Console URL Testing Tools",
+    "description": "Provides tools for running validation tests against single URLs",
+    "docsUrl": "https://developers.google.com/webmaster-tools/search-console-api/",
+    "url": "https://api.apis.guru/v2/specs/googleapis.com/searchconsole/v1/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://searchconsole.googleapis.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "searchconsole_urlTestingTools_mobileFriendlyTest_run": {
+            "main": "./lib/actions/searchconsole_urlTestingTools_mobileFriendlyTest_run.js",
+            "title": "Runs Mobile-Friendly Test for a given URL.",
+            "description": "Runs Mobile-Friendly Test for a given URL.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/searchconsole_urlTestingTools_mobileFriendlyTest_run.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
